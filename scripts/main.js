@@ -16,3 +16,7 @@ console.log(addExpenses.toLowerCase());
 console.log(addExpenses.split(' '));
 
 console.log(Math.floor (budgetDay / 30));
+
+
+
+
