@@ -17,3 +17,23 @@ console.log(addExpenses.split(' '));
 
 console.log(Math.floor (budgetDay / 30));
 
+money = prompt('Ваш месячный доход?');
+console.log(typeof money);
+
+addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+console.log(typeof addExpenses);
+
+deposit  = confirm('Есть ли у вас депозит в банке?');
+console.log(typeof deposit);
+
+let expenses1 = prompt('Введите обязательную статью расходов?');
+let expenses2 = prompt('Введите обязательную статью расходов?');
+
+let amount1 = prompt('Во сколько это обойдется?');
+let amount2 = prompt('Во сколько это обойдется?');
+
+let budgetMonth = money - amount1 - amount2;
+console.log('Бюджет на месяц: ' + budgetMonth);
+
+mission = mission / budgetMonth;
+console.log('Цель будет достигнута за: ' + Math.round(mission) + ' месяцев');
