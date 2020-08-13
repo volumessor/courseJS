@@ -3,26 +3,20 @@ let isNumber = function(n) {
 }
 
 
-
-let money
-let income = 'work';
-let addExpenses = 'taxi, internet, phone';
-let deposit = true;
-let mission = 1000000;
-let period = 6;
-let budgetDay = 50000;
-
-
-
-console.log(addExpenses.toLowerCase());
-console.log(addExpenses.split(' '));
-
-console.log(Math.floor (budgetDay / 30));
-
+let money,
+    income = 'work',
+    addExpenses,
+    deposit = true,
+    mission = 1000000,
+    period,
+    budgetDay;
 
 
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 console.log(typeof addExpenses);
+console.log(addExpenses.toLowerCase());
+console.log(addExpenses.split(' '));
+
 
 deposit  = confirm('Есть ли у вас депозит в банке?');
 console.log(typeof deposit);
@@ -109,3 +103,7 @@ console.log (getTargetMonth());
 
 budgetDay = accumulatedMonth / 30;
 console.log('Бюджет на день: ' + Math.floor(budgetDay));
+
+// console.log
+
+console.log(Math.floor (budgetDay / 30));
