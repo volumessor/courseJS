@@ -1,4 +1,4 @@
-let isNumber = function(n) {
+/*let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n)
 }
 let money,
@@ -134,6 +134,77 @@ console.log('Расходы за месяц: ' + appData.expensesMonth);
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 console.log(appData.calcSavedMoney());
-console.log(appData.addExpenses);
+console.log(appData.addExpenses);*/
+
+
+//lesson09 - Получение элементов со страницы
+
+let buttonCalc = document.getElementById('start');
+console.log(buttonCalc);
+
+let btnPlusIncomeAdd = document.getElementsByTagName('button')[0];
+console.log(btnPlusIncomeAdd);
+
+let btnPlusExpensesAdd = document.getElementsByTagName('button')[1];
+console.log(btnPlusExpensesAdd);
+
+let depositCheck = document.querySelector('#deposit-check');
+console.log(depositCheck);
+
+let additionalIncomeItem = document.querySelectorAll('.additional_income-item');
+console.log(additionalIncomeItem);
+
+//right_side_programm
+
+let budgetMonth = document.getElementsByClassName('budget_month-value');
+console.log(budgetMonth);
+
+let budgetDay = document.getElementsByClassName('budget_day-value');
+console.log(budgetDay);
+
+let expensesMonth = document.getElementsByClassName('expenses_month-value');
+console.log(expensesMonth);
+
+let additionalIncome = document.getElementsByClassName('additional_income-value');
+console.log(additionalIncome);
+
+let additionalExpenses = document.getElementsByClassName('additional_expenses-value');
+console.log(additionalExpenses);
+
+let incomePeriod = document.getElementsByClassName('income_period-value');
+console.log(incomePeriod);
+
+let targetMonth = document.getElementsByClassName('target_month-value');
+console.log(targetMonth);
+
+//right_side_programm
+//last_input or range
+
+let salaryAmount = document.querySelector('.salary-amount');
+console.log(salaryAmount);
+
+let incomeTitle = document.querySelector('[placeholder="Наименование"]');
+console.log(incomeTitle);
+
+let incomeAmount = document.querySelector('.income-amount');
+console.log(incomeAmount);
+
+let expensesTitle = document.querySelector('div.expenses-items [placeholder="Наименование"]');
+console.log(expensesTitle);
+
+let expensesAmount = document.querySelector('.expenses-amount');
+console.log(expensesAmount);
+
+let additionalExpensesItem = document.querySelector('.additional_expenses-item');
+console.log(additionalExpensesItem);
+
+let targetAmount = document.querySelector('.target-amount');
+console.log(targetAmount);
+
+let periodSelect = document.querySelector('.period-select');
+console.log(periodSelect);
+
+//last input or range
+//lesson09 - Получение элементов со страницы
 
 
