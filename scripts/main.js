@@ -135,3 +135,5 @@ console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 console.log(appData.calcSavedMoney());
 console.log(appData.addExpenses);
+
+
