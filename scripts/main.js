@@ -207,4 +207,11 @@ console.log(periodSelect);
 //last input or range
 //lesson09 - Получение элементов со страницы
 
+//lesson10 - Работа с книгами
+
+
+
+//lesson10 - Работа с книгами
+
+
 
