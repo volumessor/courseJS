@@ -208,9 +208,53 @@ console.log(periodSelect);
 //lesson09 - Получение элементов со страницы
 
 //lesson10 - Работа с книгами
+//Восстановление порядка книг
+const book = document.querySelectorAll('.book');
+
+book[0].before(book[1]);
+book[0].after(book[4]);
+book[4].after(book[3]);
+book[3].after(book[5]);
+
+//change image background
+const backgroundImage = document.body.style.backgroundImage = ('url(./image/you-dont-know-js.jpg)');
+//change h2 book3
+const bookThree = document.querySelectorAll('h2');
+bookThree[2].insertAdjacentText('afterbegin', '"');
+bookThree[2].insertAdjacentText('beforeend', '")');
+//Удаление рекламы
+const deleteBanner = document.querySelector('div.adv');
+deleteBanner.remove();
+//Правим главы
+const book2 = document.querySelectorAll('.book')[1];
+const book2Ul = book2.querySelector('ul');
+const book2Li = book2.querySelectorAll('li');
+const l1 = book2.querySelectorAll("li")[0],
+        l2 = book2.querySelectorAll("li")[1],
+        l3 = book2.querySelectorAll("li")[3],
+        l4 = book2.querySelectorAll("li")[6],
+        l5 = book2.querySelectorAll("li")[8],
+        l6 = book2.querySelectorAll("li")[4],
+        l7 = book2.querySelectorAll("li")[5],
+        l8 = book2.querySelectorAll("li")[7],
+        l9 = book2.querySelectorAll("li")[9],
+        l10 = book2.querySelectorAll("li")[2],
+        l11 = book2.querySelectorAll("li")[10];
+        
+ l10.after(l2);
 
 
 
+
+console.log(book2);
+//Добавление главы 8 в 6 книгу
+const book6 = document.querySelectorAll('.book')[5];
+const newUl = book6.querySelector('ul');
+const allLi = book6.querySelectorAll('li')[8];
+
+const newLi = document.createElement("li");
+    newLi.innerHTML = "Глава 8: За пределами ES6";
+    allLi.after(newLi);
 //lesson10 - Работа с книгами
 
 
