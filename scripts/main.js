@@ -226,6 +226,7 @@ bookThree[2].insertAdjacentText('beforeend', '")');
 const deleteBanner = document.querySelector('div.adv');
 deleteBanner.remove();
 //Правим главы
+//Книга 2
 const book2 = document.querySelectorAll('.book')[1];
 const book2Ul = book2.querySelector('ul');
 const book2Li = book2.querySelectorAll('li');
@@ -241,12 +242,38 @@ const l1 = book2.querySelectorAll("li")[0],
         l10 = book2.querySelectorAll("li")[2],
         l11 = book2.querySelectorAll("li")[10];
         
- l10.after(l2);
-
-
-
-
-console.log(book2);
+ l2.after(l3);
+ l3.after(l4);
+ l4.after(l5);
+ l5.after(l6);
+ l6.after(l7);
+ l7.after(l8);
+ l8.after(l9);
+ l9.after(l10);
+//Книга 5
+const book5 = document.querySelectorAll('.book')[4];
+const book5Ul = book5.querySelector('ul');
+const book5Li = book5.querySelectorAll('li');
+const b1 = book5.querySelectorAll("li")[0],
+        b2 = book5.querySelectorAll("li")[1],
+        b3 = book5.querySelectorAll("li")[9],
+        b4 = book5.querySelectorAll("li")[3],
+        b5 = book5.querySelectorAll("li")[4],
+        b6 = book5.querySelectorAll("li")[2],
+        b7 = book5.querySelectorAll("li")[6],
+        b8 = book5.querySelectorAll("li")[7],
+        b9 = book5.querySelectorAll("li")[5],
+        b10 = book5.querySelectorAll("li")[8],
+        b11 = book5.querySelectorAll("li")[10];
+    console.log(book5);   
+    b2.after(b3);
+    b3.after(b4);
+    b4.after(b5);
+    b5.after(b6);
+    b6.after(b7);
+    b7.after(b8);
+    b8.after(b9);
+    b9.after(b10);
 //Добавление главы 8 в 6 книгу
 const book6 = document.querySelectorAll('.book')[5];
 const newUl = book6.querySelector('ul');
