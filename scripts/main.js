@@ -1,4 +1,4 @@
-/*let isNumber = function(n) {
+let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n)
 }
 let money,
@@ -134,7 +134,7 @@ console.log('Расходы за месяц: ' + appData.expensesMonth);
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
 console.log(appData.calcSavedMoney());
-console.log(appData.addExpenses);*/
+console.log(appData.addExpenses);
 
 
 //lesson09 - Получение элементов со страницы
@@ -207,6 +207,7 @@ console.log(periodSelect);
 //last input or range
 //lesson09 - Получение элементов со страницы
 
+/*
 //lesson10 - Работа с книгами
 //Восстановление порядка книг
 const book = document.querySelectorAll('.book');
@@ -283,6 +284,6 @@ const newLi = document.createElement("li");
     newLi.innerHTML = "Глава 8: За пределами ES6";
     allLi.after(newLi);
 //lesson10 - Работа с книгами
-
+/*
 
 
