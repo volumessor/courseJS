@@ -1,6 +1,7 @@
 //lesson09 - Получение элементов со страницы
 
-let start = document.getElementById('start');
+let start = document.getElementById('start'),
+    cancelButton = document.getElementById("cancel");
 
 let btnPlusIncomeAdd = document.getElementsByTagName('button')[0];
 
@@ -10,8 +11,11 @@ let expensesPlus = document.getElementsByTagName('button')[1];
 let depositCheck = document.querySelector('#deposit-check');
 
 
-let additionalIncomeItem = document.querySelectorAll('.additional_income-item');
+let additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
+    
+    expensesButton = document.getElementsByTagName("button")[1],
 
+    incomeButton = document.getElementsByTagName("button")[0];
 
 //right_side_programm
 
@@ -97,29 +101,62 @@ let appData = {
         return appData.budgetMonth * appData.period;
     },
     start: function() {
-        appData.budget = salaryAmount.value;
-        appData.getIncome();
-        appData.getIncomeMonth();
-        appData.getExpenses();
-        appData.getExpensesMonth();
-        appData.getBudget();
-        appData.getAddExpenses();
-        appData.getAddIncome();
-        appData.showResult();        
+        this.budget = salaryAmount.value;
+        this.getIncome();
+        this.getIncomeMonth();
+        this.getExpenses();
+        this.getExpensesMonth();
+        this.getBudget();
+        this.getAddExpenses();
+        this.getAddIncome();
+        this.showResult();        
     },
     showResult: function(){
-        budgetMonthValue.value = appData.budgetMonth;
-        budgetDayValue.value = appData.budgetDay;
-        expensesMonthValue.value = appData.expensesMonth;
-        additionalExpensesValue.value = appData.addExpenses.join(', ');
-        additionalIncomeValue.value = appData.addIncome.join(', ');
-        targetMonth.value = Math.ceil(appData.getTargetMonth());
-        incomePeriod.value = appData.calcPeriod();
+        budgetMonthValue.value = this.budgetMonth;
+        budgetDayValue.value = this.budgetDay;
+        expensesMonthValue.value = this.expensesMonth;
+        additionalExpensesValue.value = this.addExpenses.join(', ');
+        additionalIncomeValue.value = this.addIncome.join(', ');
+        targetMonth.value = Math.ceil(this.getTargetMonth());
+        incomePeriod.value = this.calcPeriod();
 
          //Меняем накопления
 
          periodSelect.addEventListener('input', () => {
-            incomePeriod.value = Math.ceil(appData.calcPeriod());
+            incomePeriod.value = Math.ceil(this.calcPeriod());
+        });
+        //Блокируем все поля
+        document.querySelector('.data').querySelectorAll('[type="text"]').forEach(function(item){
+            item.disabled = true;
+        });
+        document.querySelectorAll('.btn_plus').forEach(item => {
+            item.disabled = true;
+        });
+        //Изменяем кнопки
+        start.style.display = 'none';
+        cancelButton.style.display = 'block';
+        //Сбрасываем прогресс
+        cancelButton.addEventListener('click', () => {
+        //Разблокируем поля
+            document.querySelector('.data').querySelectorAll('[type="text"]').forEach(function(item){
+            document.querySelectorAll('[type="text"]').forEach(function(item){
+                item.disabled = false;
+                item.value = null;
+            });
+            document.querySelectorAll('.btn_plus').forEach(item => {
+                item.disabled = false;
+            });
+            //Все объекты к 0
+            for(let key in this) {
+                if(key = 13) break;
+                this[key] = 0;
+            }
+            start.style.display = 'block';
+            start.disabled = true;
+            cancelButton.style.display = 'none';
+            periodSelect.value = 1;
+            viePeriod.textContent = periodSelect.value;
+        });
         });
     },
     addExpensesBlock: function(){
@@ -146,7 +183,7 @@ let appData = {
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if(itemExpenses !== '' && cashExpenses !== ''){
-                appData.expenses[itemExpenses] = cashExpenses;
+                this.expenses[itemExpenses] = cashExpenses;
             }
         });
     },
@@ -155,10 +192,10 @@ let appData = {
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if(itemIncome !== '' && cashIncome !== ''){
-                appData.income[itemIncome] = cashIncome;
+                this.income[itemIncome] = cashIncome;
             }
-                for(let key in appData.income){
-                    appData.incomeMonth += +appData.income[key];
+                for(let key in this.income){
+                    this.incomeMonth += +this.income[key];
                 }
         });
     },
@@ -167,7 +204,7 @@ let appData = {
         addExpenses.forEach(function(item){
             item = item.trim();
             if(item !== ''){
-                appData.addExpenses.push(item);
+                this.addExpenses.push(item);
             }
         });
     },
@@ -175,36 +212,34 @@ let appData = {
         additionalIncomeItem.forEach(function(item){
             let itemValue = item.value.trim();
             if(itemValue !== ''){
-                appData.addIncome.push(itemValue);
+                this.addIncome.push(itemValue);
             }
         });
     },
     getBudget : function () {
-        appData.budgetMonth = appData.budget - appData.expensesMonth + appData.incomeMonth;
-        console.log(appData.incomeMonth);
-        console.log(appData.budget);
-        console.log(appData.expensesMonth);
-        if(appData.budgetMonth >= 0) {
-            appData.budgetDay = appData.budgetMonth / 30;
+        this.budgetMonth = this.budget - this.expensesMonth + this.incomeMonth;
+        console.log(this.incomeMonth);
+        console.log(this.budget);
+        console.log(this.expensesMonth);
+        if(this.budgetMonth >= 0) {
+            this.budgetDay = this.budgetMonth / 30;
         } else {
             alert("Ошибка! Бюджет на месяц отрицательный!");
             return;
         }
     },
     getTargetMonth: function(){
-        return targetAmount.value / appData.budgetMonth;
+        return targetAmount.value / this.budgetMonth;
     },
     calcPeriod: function(){
-        return appData.budgetMonth * periodSelect.value;
+        return this.budgetMonth * periodSelect.value;
     },
     getIncomeMonth : function () {
-        for (let key in appData.income) {
-            appData.incomeMonth += +appData.income[key];
+        for (let key in this.income) {
+            this.incomeMonth += +this.income[key];
         }
     },
 };
-
-console.log(appData.addExpenses )
 
 function checkVariable (param, text) {
     let variable = prompt(text);
@@ -235,8 +270,10 @@ function arrEdit (arr) {
     }
     return arr;
 };
-//Кнопки
+//Кнопки 13
+start.addEventListener('click', appData.start.bind(appData));
 start.setAttribute('disabled', "disabled");
+
 
 //Блокировка и разблокировка кнопки
 salaryAmount.addEventListener('input', function() {
@@ -246,94 +283,30 @@ salaryAmount.addEventListener('input', function() {
         start.setAttribute('disabled', "disabled");
     }; 
 });
+salaryAmount.addEventListener('change', function() {
+    if(salaryAmount.value !== "") {
+        start.removeAttribute('disabled')
+    } else {
+        start.setAttribute('disabled', "disabled");
+    }; 
+});
+/*expensesButton.addEventListener('click', () => {
+    appData.addExpensesBlock();
+    checkArr(expensesItems);
+}); 
+incomeButton.addEventListener('click', () => {
+    appData.addIncomeBlock();
+    checkArr(incomeItems);
+});*/
 
 periodSelect.addEventListener('input', () => {
     viePeriod.textContent = periodSelect.value;
 });
 
-start.addEventListener('click', appData.start);
+start.addEventListener('click', this.start);
 
-expensesPlus.addEventListener('click', appData.addExpensesBlock);
+expensesPlus.addEventListener('click', this.addExpensesBlock);
 
-
-//last input or range
-//lesson09 - Получение элементов со страницы
-
-/*
-//lesson10 - Работа с книгами
-//Восстановление порядка книг
-const book = document.querySelectorAll('.book');
-
-book[0].before(book[1]);
-book[0].after(book[4]);
-book[4].after(book[3]);
-book[3].after(book[5]);
-
-//change image background
-const backgroundImage = document.body.style.backgroundImage = ('url(./image/you-dont-know-js.jpg)');
-//change h2 book3
-const bookThree = document.querySelectorAll('h2');
-bookThree[2].insertAdjacentText('afterbegin', '"');
-bookThree[2].insertAdjacentText('beforeend', '")');
-//Удаление рекламы
-const deleteBanner = document.querySelector('div.adv');
-deleteBanner.remove();
-//Правим главы
-//Книга 2
-const book2 = document.querySelectorAll('.book')[1];
-const book2Ul = book2.querySelector('ul');
-const book2Li = book2.querySelectorAll('li');
-const l1 = book2.querySelectorAll("li")[0],
-        l2 = book2.querySelectorAll("li")[1],
-        l3 = book2.querySelectorAll("li")[3],
-        l4 = book2.querySelectorAll("li")[6],
-        l5 = book2.querySelectorAll("li")[8],
-        l6 = book2.querySelectorAll("li")[4],
-        l7 = book2.querySelectorAll("li")[5],
-        l8 = book2.querySelectorAll("li")[7],
-        l9 = book2.querySelectorAll("li")[9],
-        l10 = book2.querySelectorAll("li")[2],
-        l11 = book2.querySelectorAll("li")[10];
-        
- l2.after(l3);
- l3.after(l4);
- l4.after(l5);
- l5.after(l6);
- l6.after(l7);
- l7.after(l8);
- l8.after(l9);
- l9.after(l10);
-//Книга 5
-const book5 = document.querySelectorAll('.book')[4];
-const book5Ul = book5.querySelector('ul');
-const book5Li = book5.querySelectorAll('li');
-const b1 = book5.querySelectorAll("li")[0],
-        b2 = book5.querySelectorAll("li")[1],
-        b3 = book5.querySelectorAll("li")[9],
-        b4 = book5.querySelectorAll("li")[3],
-        b5 = book5.querySelectorAll("li")[4],
-        b6 = book5.querySelectorAll("li")[2],
-        b7 = book5.querySelectorAll("li")[6],
-        b8 = book5.querySelectorAll("li")[7],
-        b9 = book5.querySelectorAll("li")[5],
-        b10 = book5.querySelectorAll("li")[8],
-        b11 = book5.querySelectorAll("li")[10];
-    console.log(book5);   
-    b2.after(b3);
-    b3.after(b4);
-    b4.after(b5);
-    b5.after(b6);
-    b6.after(b7);
-    b7.after(b8);
-    b8.after(b9);
-    b9.after(b10);
-//Добавление главы 8 в 6 книгу
-const book6 = document.querySelectorAll('.book')[5];
-const newUl = book6.querySelector('ul');
-const allLi = book6.querySelectorAll('li')[8];
-
-const newLi = document.createElement("li");
-    newLi.innerHTML = "Глава 8: За пределами ES6";
-    allLi.after(newLi);
-//lesson10 - Работа с книгами
-*/
+//Доходы и расходы
+//checkArr(incomeItems);
+//checkArr(expensesItems);
