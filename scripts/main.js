@@ -54,88 +54,6 @@ let incomeItem = document.querySelectorAll('.income-items');
 let viePeriod = document.querySelector(".period-amount");
 
 
-
-//last input or range
-//lesson09 - Получение элементов со страницы
-
-/*
-//lesson10 - Работа с книгами
-//Восстановление порядка книг
-const book = document.querySelectorAll('.book');
-
-book[0].before(book[1]);
-book[0].after(book[4]);
-book[4].after(book[3]);
-book[3].after(book[5]);
-
-//change image background
-const backgroundImage = document.body.style.backgroundImage = ('url(./image/you-dont-know-js.jpg)');
-//change h2 book3
-const bookThree = document.querySelectorAll('h2');
-bookThree[2].insertAdjacentText('afterbegin', '"');
-bookThree[2].insertAdjacentText('beforeend', '")');
-//Удаление рекламы
-const deleteBanner = document.querySelector('div.adv');
-deleteBanner.remove();
-//Правим главы
-//Книга 2
-const book2 = document.querySelectorAll('.book')[1];
-const book2Ul = book2.querySelector('ul');
-const book2Li = book2.querySelectorAll('li');
-const l1 = book2.querySelectorAll("li")[0],
-        l2 = book2.querySelectorAll("li")[1],
-        l3 = book2.querySelectorAll("li")[3],
-        l4 = book2.querySelectorAll("li")[6],
-        l5 = book2.querySelectorAll("li")[8],
-        l6 = book2.querySelectorAll("li")[4],
-        l7 = book2.querySelectorAll("li")[5],
-        l8 = book2.querySelectorAll("li")[7],
-        l9 = book2.querySelectorAll("li")[9],
-        l10 = book2.querySelectorAll("li")[2],
-        l11 = book2.querySelectorAll("li")[10];
-        
- l2.after(l3);
- l3.after(l4);
- l4.after(l5);
- l5.after(l6);
- l6.after(l7);
- l7.after(l8);
- l8.after(l9);
- l9.after(l10);
-//Книга 5
-const book5 = document.querySelectorAll('.book')[4];
-const book5Ul = book5.querySelector('ul');
-const book5Li = book5.querySelectorAll('li');
-const b1 = book5.querySelectorAll("li")[0],
-        b2 = book5.querySelectorAll("li")[1],
-        b3 = book5.querySelectorAll("li")[9],
-        b4 = book5.querySelectorAll("li")[3],
-        b5 = book5.querySelectorAll("li")[4],
-        b6 = book5.querySelectorAll("li")[2],
-        b7 = book5.querySelectorAll("li")[6],
-        b8 = book5.querySelectorAll("li")[7],
-        b9 = book5.querySelectorAll("li")[5],
-        b10 = book5.querySelectorAll("li")[8],
-        b11 = book5.querySelectorAll("li")[10];
-    console.log(book5);   
-    b2.after(b3);
-    b3.after(b4);
-    b4.after(b5);
-    b5.after(b6);
-    b6.after(b7);
-    b7.after(b8);
-    b8.after(b9);
-    b9.after(b10);
-//Добавление главы 8 в 6 книгу
-const book6 = document.querySelectorAll('.book')[5];
-const newUl = book6.querySelector('ul');
-const allLi = book6.querySelectorAll('li')[8];
-
-const newLi = document.createElement("li");
-    newLi.innerHTML = "Глава 8: За пределами ES6";
-    allLi.after(newLi);
-//lesson10 - Работа с книгами
-*/
 let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n)
 }
@@ -336,3 +254,86 @@ periodSelect.addEventListener('input', () => {
 start.addEventListener('click', appData.start);
 
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
+
+
+//last input or range
+//lesson09 - Получение элементов со страницы
+
+/*
+//lesson10 - Работа с книгами
+//Восстановление порядка книг
+const book = document.querySelectorAll('.book');
+
+book[0].before(book[1]);
+book[0].after(book[4]);
+book[4].after(book[3]);
+book[3].after(book[5]);
+
+//change image background
+const backgroundImage = document.body.style.backgroundImage = ('url(./image/you-dont-know-js.jpg)');
+//change h2 book3
+const bookThree = document.querySelectorAll('h2');
+bookThree[2].insertAdjacentText('afterbegin', '"');
+bookThree[2].insertAdjacentText('beforeend', '")');
+//Удаление рекламы
+const deleteBanner = document.querySelector('div.adv');
+deleteBanner.remove();
+//Правим главы
+//Книга 2
+const book2 = document.querySelectorAll('.book')[1];
+const book2Ul = book2.querySelector('ul');
+const book2Li = book2.querySelectorAll('li');
+const l1 = book2.querySelectorAll("li")[0],
+        l2 = book2.querySelectorAll("li")[1],
+        l3 = book2.querySelectorAll("li")[3],
+        l4 = book2.querySelectorAll("li")[6],
+        l5 = book2.querySelectorAll("li")[8],
+        l6 = book2.querySelectorAll("li")[4],
+        l7 = book2.querySelectorAll("li")[5],
+        l8 = book2.querySelectorAll("li")[7],
+        l9 = book2.querySelectorAll("li")[9],
+        l10 = book2.querySelectorAll("li")[2],
+        l11 = book2.querySelectorAll("li")[10];
+        
+ l2.after(l3);
+ l3.after(l4);
+ l4.after(l5);
+ l5.after(l6);
+ l6.after(l7);
+ l7.after(l8);
+ l8.after(l9);
+ l9.after(l10);
+//Книга 5
+const book5 = document.querySelectorAll('.book')[4];
+const book5Ul = book5.querySelector('ul');
+const book5Li = book5.querySelectorAll('li');
+const b1 = book5.querySelectorAll("li")[0],
+        b2 = book5.querySelectorAll("li")[1],
+        b3 = book5.querySelectorAll("li")[9],
+        b4 = book5.querySelectorAll("li")[3],
+        b5 = book5.querySelectorAll("li")[4],
+        b6 = book5.querySelectorAll("li")[2],
+        b7 = book5.querySelectorAll("li")[6],
+        b8 = book5.querySelectorAll("li")[7],
+        b9 = book5.querySelectorAll("li")[5],
+        b10 = book5.querySelectorAll("li")[8],
+        b11 = book5.querySelectorAll("li")[10];
+    console.log(book5);   
+    b2.after(b3);
+    b3.after(b4);
+    b4.after(b5);
+    b5.after(b6);
+    b6.after(b7);
+    b7.after(b8);
+    b8.after(b9);
+    b9.after(b10);
+//Добавление главы 8 в 6 книгу
+const book6 = document.querySelectorAll('.book')[5];
+const newUl = book6.querySelector('ul');
+const allLi = book6.querySelectorAll('li')[8];
+
+const newLi = document.createElement("li");
+    newLi.innerHTML = "Глава 8: За пределами ES6";
+    allLi.after(newLi);
+//lesson10 - Работа с книгами
+*/
