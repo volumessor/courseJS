@@ -269,6 +269,35 @@ AppData.prototype.eventListener = function () {
     
 };
 
+function checkVariable (param, text) {
+    let variable = prompt(text);
+    if (param == "arr") {
+        while (variable == null ||  variable == "" || variable.indexOf(",") == "-1" || variable.indexOf(",") == "0") {
+            variable = prompt(text + "\nПоле должно содержать корректные значения!", "Садик, Школа, Институт");
+        }
+        variable = arrEdit(variable.split(","));
+        return variable;
+    } else {
+        if (param == "string") {
+            while (variable == null || variable == "" || +variable) {
+                variable = prompt(text + "\nПоле должно содержать корректное значение!", "Такси");
+            } 
+        } else if (param == "number") {
+            while (variable == null || !+variable || variable <= 0 || !isFinite(variable) || isNaN(variable) || variable.charAt(0) == ".") {
+                variable = prompt(text + "\nПоле должно содержать корректное значение!", "10000");
+            }
+        }
+        return variable.trim();
+    }
+};
+
+function arrEdit (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].trim();
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+    }
+    return arr;
+};
 
 const appData = new AppData();
 
