@@ -36,3 +36,6 @@ window.addEventListener('DOMContentLoaded', function() {
     
     countTimer('2 september 2020');
 });
+
+
+
