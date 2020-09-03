@@ -49,13 +49,13 @@ const toggleMenu = () => {
         menu.classList.toggle('active-menu');
     };   
     
-    //Новые обработчики
+    //Новый обработчик
     const containerParent = document.body;
     containerParent.addEventListener('click', (event) => {
         let target = event.target;
         if(target.closest('.menu')){
             handlerMenu();
-        }
+        } 
         if(target.closest('.close-btn')){
             handlerMenu();
         }
