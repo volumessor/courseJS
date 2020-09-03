@@ -48,11 +48,21 @@ const toggleMenu = () => {
     const handlerMenu = () => {
         menu.classList.toggle('active-menu');
     };   
-        
-    btnMenu.addEventListener('click', handlerMenu);
-    closeBtn.addEventListener('click', handlerMenu);
-    menuItems.forEach((elem) => elem.addEventListener('click', handlerMenu));
-
+    
+    //Новые обработчики
+    const containerParent = document.body;
+    containerParent.addEventListener('click', (event) => {
+        let target = event.target;
+        if(target.closest('.menu')){
+            handlerMenu();
+        }
+        if(target.closest('.close-btn')){
+            handlerMenu();
+        }
+        if(target.closest('ul>li')){
+            handlerMenu();
+        }
+    });
 };
 toggleMenu();
 
@@ -62,7 +72,6 @@ const togglePopUp = () => {
     //Поулчаем элементы
     const popup = document.querySelector('.popup'),
         popupBtn = document.querySelectorAll('.popup-btn'),
-        popupClose = document.querySelector('.popup-close'),
         popupContent =document.querySelector('.popup-content');
 
     popupBtn.forEach((elem) => {
@@ -70,9 +79,6 @@ const togglePopUp = () => {
             popup.style.display = 'block';
             if(window.screen.availWidth > 768) modalAnimation();
         });
-    });
-    popupClose.addEventListener('click', () => {
-        popup.style.display = 'none';
     });
     //Анимация
     const modalAnimation = () => {
@@ -87,6 +93,54 @@ const togglePopUp = () => {
         };
         newAnimation();
     };
+
+    popup.addEventListener('click', (event)=>{
+        let target = event.target;
+
+        if(target.classList.contains('popup-close')){
+            popup.style.display = 'none';
+        } else {
+            target = target.closest('.popup-content');
+        if(!target){
+            popup.style.display = 'none';
+        }
+        }
+       
+    });
 };
+
 togglePopUp();
+
+//Делаем табы
+
+    const tabs = () => {
+        const tabHeader =document.querySelector('.service-header'),
+            tab = tabHeader.querySelectorAll('.service-header-tab'),
+            tabContent = document.querySelectorAll('.service-tab');
+    //Функция смены контента
+    const toggleTabContent = (index) => {
+        for(let i = 0; i < tabContent.length; i++){
+            if(index === i){
+                tab[i].classList.add('active');
+                tabContent[i].classList.remove('d-none');
+            } else {
+                tab[i].classList.remove('active');
+                tabContent[i].classList.add('d-none');
+            }
+        }
+    };
+    //Пишем обработчик события
+    tabHeader.addEventListener('click', (event) => {
+        let target = event.target;
+        target = target.closest('.service-header-tab');
+        if(target){
+            tab.forEach((item, i) => {
+                if(item === target){
+                    toggleTabContent(i);
+                }
+            }); 
+        }
+    });
+    };
+    tabs();
 });
