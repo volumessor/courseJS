@@ -241,6 +241,43 @@ const nextSlide = (elem, index, strClass) => {
     });
 
     startSlide(1500);
+
+
+    
+
 }
 slider();
+
+// Пишем смену картинок
+    let imageTeam = document.querySelectorAll('.command__photo');
+    console.log(imageTeam);
+    imageTeam.forEach((item) => {
+        item.addEventListener('mouseenter', (event) => {
+            item.dataset.oneImg = item.src;
+            item.src = item.dataset.img;
+        });
+        item.addEventListener('mouseout', (event) => {
+            item.dataset.twoImg = item.src;
+            item.src = item.dataset.oneImg;
+        });
+    });
+
+
+
+
+
+
+
+
+
+    //Обработчик события
+    //Валидация
+    const someValid = () => {
+        document.querySelector(`.calc-block`).querySelectorAll(`input`).forEach((item) => {
+            item.addEventListener('input', () => {
+                item.value = item.value.replace(/\D/, "");
+            })
+        })
+    }
+    someValid();
 });
