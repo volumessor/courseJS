@@ -261,16 +261,6 @@ slider();
             item.src = item.dataset.oneImg;
         });
     });
-
-
-
-
-
-
-
-
-
-    //Обработчик события
     //Валидация
     const someValid = () => {
         document.querySelector(`.calc-block`).querySelectorAll(`input`).forEach((item) => {
@@ -280,4 +270,54 @@ slider();
         })
     }
     someValid();
+
+//Калькулятор
+
+const calc = (price = 100) => {
+    //Получаем элементы
+    const calcBlock = document.querySelector('.calc-block'),
+        calcTipe = document.querySelector('.calc-type'),
+        calcSquare = document.querySelector('.calc-square'),
+        calcCount = document.querySelector('.calc-count'),
+        calcDay = document.querySelector('.calc-day'),
+        totalValue = document.getElementById('total');
+
+    //Считаем итоговую сумму
+    const countSum = () => {
+        let total = 0;
+        let countValue = 1;
+        let dayValue = 1;
+        const typeValue = calcTipe.options[calcTipe.selectedIndex].value; //селекты
+        let squareValue = +calcSquare.value; //площадь
+
+
+        if(calcCount.value > 1){
+            countValue += (calcCount.value - 1) /10;
+        }
+
+        if(calcDay.value && calcDay.value < 5){
+            dayValue *= 2;
+        } else if (calcDay.value && calcDay.value < 10){
+            dayValue *= 1.5;
+        }
+
+        if(typeValue && squareValue){
+            total = price * typeValue * squareValue * countValue * dayValue;
+        }
+        totalValue.textContent = total;
+    };
+
+
+        calcBlock.addEventListener('change', (event) => {
+            const target = event.target;
+            if(target === calcTipe || target === calcSquare || 
+               target === calcDay || target === calcCount){
+                    countSum();
+                }
+
+        });
+};
+
+calc(100);
+
 });
