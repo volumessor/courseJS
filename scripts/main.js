@@ -320,4 +320,27 @@ const calc = (price = 100) => {
 
 calc(100);
 
+//send-ajax-form
+
+const sendForm = () => {
+
+    const errorMessage = 'Что-то пошло не так....',
+        loadMessage = 'Загрузка..',
+        succesMessage = 'Спасибо!';
+
+    //Получаем форму
+    const form = document.getElementById('form1');
+
+    //Оповещение пользователя
+    console.log(statusMessage);
+    const statusMessage = document.createElement('div');
+    statusMessage.textContent = 'Привет';
+    form.appendChild(statusMessage);
+
+
+
+}
+sendForm();
+
+
 });
