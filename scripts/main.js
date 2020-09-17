@@ -420,28 +420,41 @@ window.addEventListener('DOMContentLoaded', function () {
                     statusMessage.textContent = errorMessage;
                     console.error(error);
                 }
-                postData(body).then(outputSeccess).catch(outputError);
+                postData(body).then((response) => {
+                    if(response.status !== 200) {
+                        throw outputError;
+                    }
+                    outputSeccess();
+                }).catch(outputError);
             });
         };
  
         //Взаимодействие с серверов
         const postData = (body) => {
-            return new Promise((resolve, reject) => {
-                const request = new XMLHttpRequest();
-                request.addEventListener(`readystatechange`, () => {
-                if(request.readyState !==4) {
-                    return;
-                }
-                if(request.status === 200) {
-                    resolve();
-                } else {
-                    reject(request.status);
-                }
-            });
-            request.open(`POST`, `./server.php`);
-            request.setRequestHeader(`Content-Type`, `application/json`);
-            request.send(JSON.stringify(body));
-            }) 
+            return fetch(`./servr.php`, {
+                method: `POST`,
+                headers: {
+                    'Content-Type': `application/json`
+                },
+                body: JSON.stringify(body),
+                credentials: `include`
+            })
+            // return new Promise((resolve, reject) => {
+            //     const request = new XMLHttpRequest();
+            //     request.addEventListener(`readystatechange`, () => {
+            //     if(request.readyState !==4) {
+            //         return;
+            //     }
+            //     if(request.status === 200) {
+            //         resolve();
+            //     } else {
+            //         reject(request.status);
+            //     }
+            // });
+            // request.open(`POST`, `./server.php`);
+            // request.setRequestHeader(`Content-Type`, `application/json`);
+            // request.send(JSON.stringify(body));
+            // }) 
         }
     }
     sendForm();
